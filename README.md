@@ -1,179 +1,167 @@
 # MyEntityApi
 
-## Table of Contents
-
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [API Documentation](#api-documentation)
-  - [1. Get Entities](#1-get-entities)
-  - [2. Get Entity by ID](#2-get-entity-by-id)
-  - [3. Create Entity](#3-create-entity)
-  - [4. Update Entity](#4-update-entity)
-  - [5. Delete Entity](#5-delete-entity)
-- [Logic Behind Each API](#logic-behind-each-api)
-- [Contributing](#contributing)
-- [License](#license)
-- [Credits](#credits)
-
-## Introduction
-
 Welcome to MyEntityApi! This API provides functionality for managing entities, allowing users to perform various operations like creating, updating, deleting, and searching entities. The project is built using .NET 8 and designed to be scalable, with features such as pagination, sorting, and advanced filtering.
 
 ## Installation
 
 ### Requirements
-
 Before you start, ensure you have the following installed:
-
-- [.NET 8](https://dotnet.microsoft.com/download/dotnet/8.0)
+- .NET 8
 
 ### Steps
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/MyEntityApi.git
+    ```
 
-1. **Clone the repository:**
+2. Navigate to the project directory:
+    ```bash
+    cd MyEntityApi
+    ```
 
-   ```bash
-   git clone https://github.com/your-username/MyEntityApi.git
-Save to grepper
-Navigate to the project directory:
+3. Run the application:
+    ```bash
+    dotnet run
+    ```
 
-bash
-Copy code
-cd MyEntityApi
-Run the application:
+The application will start, and you can access it at [https://localhost:5001](https://localhost:5001) in your browser.
 
-bash
-Copy code
-dotnet run
-The application will start, and you can access it at https://localhost:5001 in your browser.
+## API Documentation
 
-API Documentation
-1. Get Entities
-Endpoint: /api/entities
-Method: GET
-Description: Retrieve a list of entities based on specified parameters.
-Query Parameters:
-search: Search term for filtering entities.
-gender: Gender filter.
-startDate, endDate: Date range filter.
-countries: List of countries for filtering.
-pageNumber: Page number for pagination.
-pageSize: Page size for pagination.
-sortBy: Field to sort entities by.
-sortOrder: Sorting order (asc or desc).
-Example Request
-http
-Copy code
+### 1. Get Entities
+**Endpoint:** `/api/entities`  
+**Method:** `GET`  
+**Description:** Retrieve a list of entities based on specified parameters.  
+
+**Query Parameters:**
+- `search`: Search term for filtering entities.
+- `gender`: Gender filter.
+- `startDate`, `endDate`: Date range filter.
+- `countries`: List of countries for filtering.
+- `pageNumber`: Page number for pagination.
+- `pageSize`: Page size for pagination.
+- `sortBy`: Field to sort entities by.
+- `sortOrder`: Sorting order (asc or desc).
+
+**Example Request:**
+```http
 GET /api/entities?search=bob&gender=male&pageNumber=1&pageSize=10&sortBy=Id&sortOrder=asc
-Save to grepper
-Example Response
-json
-Copy code
+```
+**Example Response:**
+```json
 [
-  {
-    "id": "1",
-    "names": [
-      {
-        "firstName": "John",
-        "middleName": null,
-        "surname": "Doe"
-      }
-    ],
-    "addresses": [],
-    "dates": [],
-    "gender": "male",
-    "deceased": false
-  },
-  {
-    "id": "2",
-    "names": [
-      {
-        "firstName": "Jane",
-        "middleName": null,
-        "surname": "Smith"
-      }
-    ],
-    "addresses": [],
-    "dates": [],
-    "gender": "female",
-    "deceased": false
-  }
+    {
+        "id": "1",
+        "names": [
+            {
+                "firstName": "John",
+                "middleName": null,
+                "surname": "Doe"
+            }
+        ],
+        "addresses": [],
+        "dates": [],
+        "gender": "male",
+        "deceased": false
+    },
+    {
+        "id": "2",
+        "names": [
+            {
+                "firstName": "Jane",
+                "middleName": null,
+                "surname": "Smith"
+            }
+        ],
+        "addresses": [],
+        "dates": [],
+        "gender": "female",
+        "deceased": false
+    }
 ]
-Save to grepper
-2. Get Entity by ID
-Endpoint: /api/entities/{id}
-Method: GET
-Description: Retrieve an entity by its ID.
-3. Create Entity
-Endpoint: /api/entities
-Method: POST
-Description: Create a new entity.
-Request Body:
-json
-Copy code
+```
+
+### 2. Get Entity by ID
+**Endpoint:** `/api/entities/{id}`
+**Method:** `GET`
+**Description:** Retrieve an entity by its ID.
+
+### 3. Create Entity
+**Endpoint:** `/api/entities`
+**Method:** `POST`
+**Description:** Create a new entity.
+
+**Request Body:**
+
+```json
 {
-  "names": [
-    {
-      "firstName": "New",
-      "middleName": null,
-      "surname": "Entity"
-    }
-  ],
-  "addresses": [],
-  "dates": [],
-  "gender": "unknown",
-  "deceased": false
+    "names": [
+        {
+            "firstName": "New",
+            "middleName": null,
+            "surname": "Entity"
+        }
+    ],
+    "addresses": [],
+    "dates": [],
+    "gender": "unknown",
+    "deceased": false
 }
-4. Update Entity
-Endpoint: /api/entities/{id}
-Method: PUT
-Description: Update an existing entity.
-Request Body:
-json
-Copy code
+```
+
+### 4. Update Entity
+**Endpoint:** `/api/entities/{id}`
+**Method:** `PUT`
+**Description:** Update an existing entity.
+
+**Request Body:**
+```json
 {
-  "names": [
-    {
-      "firstName": "Updated",
-      "middleName": null,
-      "surname": "Entity"
-    }
-  ],
-  "addresses": [],
-  "dates": [],
-  "gender": "unknown",
-  "deceased": false
+    "names": [
+        {
+            "firstName": "Updated",
+            "middleName": null,
+            "surname": "Entity"
+        }
+    ],
+    "addresses": [],
+    "dates": [],
+    "gender": "unknown",
+    "deceased": false
 }
-5. Delete Entity
-Endpoint: /api/entities/{id}
-Method: DELETE
-Description: Delete an entity by its ID.
-Logic Behind Each API
-1. Get Entities
-Explain the logic behind retrieving entities with filters, pagination, and sorting.
+```
 
-2. Get Entity by ID
-Explain the logic behind retrieving a single entity by its ID.
+### 5. Delete Entity
+**Endpoint:** `/api/entities/{id}`
+**Method:** `DELETE`
+**Description:** Delete an entity by its ID.
 
-3. Create Entity
-Explain the logic behind creating a new entity.
+# Logic Behind Each API
 
-4. Update Entity
-Explain the logic behind updating an existing entity.
+## Get Entities
+The logic behind retrieving entities involves applying filters, pagination, and sorting. The API utilizes a flexible querying mechanism that allows users to filter entities based on parameters such as search terms, gender, date ranges, and countries. Pagination is implemented to limit the number of results returned, and users can specify the page number and page size. Sorting is also supported, allowing users to define the field and order for sorting the results.
 
-5. Delete Entity
-Explain the logic behind deleting an entity by its ID.
+## Get Entity by ID
+This API retrieves a single entity by its unique identifier (ID). The logic involves searching the collection of entities for the specified ID and returning the corresponding entity if found. If the ID is not present, the API returns a "Not Found" response.
 
-Contributing
+## Create Entity
+The logic behind creating a new entity involves receiving a request with the details of the entity to be created. The API generates a unique identifier for the new entity, adds it to the collection, and returns a response indicating success. If validation fails or there are issues with the request, appropriate error responses are returned.
+
+## Update Entity
+Updating an existing entity involves finding the entity by its ID and applying the changes provided in the request. The API checks for the existence of the entity, and if found, updates the relevant fields. The response includes the updated entity. If the entity is not found, a "Not Found" response is returned.
+
+## Delete Entity
+The logic behind deleting an entity is straightforward. The API searches for the entity by its ID, removes it from the collection, and returns a success response. If the entity is not found, a "Not Found" response is returned.
+
+# Contributing
 Contributions are welcome! If you'd like to contribute, please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/new-feature`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add new feature'`).
+5. Push to the branch (`git push origin feature/new-feature`).
+6. Create a new Pull Request.
 
-Fork the repository.
-Create a new branch (git checkout -b feature/new-feature).
-Make your changes.
-Commit your changes (git commit -am 'Add new feature').
-Push to the branch (git push origin feature/new-feature).
-Create a new Pull Request.
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+# Credits
+This project was created by Sahitya Modi. Feel free to contact me at sahityamodi0 for any questions or feedback.
 
-Credits
-This project was created by [Your Name]. Feel free to contact me at your.email@example.com for any questions or feedback.
