@@ -95,17 +95,29 @@ GET /api/entities?search=bob&gender=male&pageNumber=1&pageSize=10&sortBy=Id&sort
 
 ```json
 {
-    "names": [
-        {
-            "firstName": "New",
-            "middleName": null,
-            "surname": "Entity"
-        }
-    ],
-    "addresses": [],
-    "dates": [],
-    "gender": "unknown",
-    "deceased": false
+  "addresses": [
+    {
+      "addressLine": "string",
+      "city": "string",
+      "country": "string"
+    }
+  ],
+  "dates": [
+    {
+      "dateType": "string",
+      "dateValue": "2024-02-28T08:58:17.737Z"
+    }
+  ],
+  "deceased": true,
+  "gender": "string",
+  "id": "string",
+  "names": [
+    {
+      "firstName": "string",
+      "middleName": "string",
+      "surname": "string"
+    }
+  ]
 }
 ```
 
@@ -117,17 +129,29 @@ GET /api/entities?search=bob&gender=male&pageNumber=1&pageSize=10&sortBy=Id&sort
 **Request Body:**
 ```json
 {
-    "names": [
-        {
-            "firstName": "Updated",
-            "middleName": null,
-            "surname": "Entity"
-        }
-    ],
-    "addresses": [],
-    "dates": [],
-    "gender": "unknown",
-    "deceased": false
+  "addresses": [
+    {
+      "addressLine": "string",
+      "city": "string",
+      "country": "string"
+    }
+  ],
+  "dates": [
+    {
+      "dateType": "string",
+      "dateValue": "2024-02-28T08:58:53.209Z"
+    }
+  ],
+  "deceased": true,
+  "gender": "string",
+  "id": "string",
+  "names": [
+    {
+      "firstName": "string",
+      "middleName": "string",
+      "surname": "string"
+    }
+  ]
 }
 ```
 
@@ -138,20 +162,31 @@ GET /api/entities?search=bob&gender=male&pageNumber=1&pageSize=10&sortBy=Id&sort
 
 # Logic Behind Each API
 
-## Get Entities
+## 1. Get Entities
 The logic behind retrieving entities involves applying filters, pagination, and sorting. The API utilizes a flexible querying mechanism that allows users to filter entities based on parameters such as search terms, gender, date ranges, and countries. Pagination is implemented to limit the number of results returned, and users can specify the page number and page size. Sorting is also supported, allowing users to define the field and order for sorting the results.
 
-## Get Entity by ID
+## 2. Get Entity by ID
 This API retrieves a single entity by its unique identifier (ID). The logic involves searching the collection of entities for the specified ID and returning the corresponding entity if found. If the ID is not present, the API returns a "Not Found" response.
 
-## Create Entity
+## 3. Create Entity
 The logic behind creating a new entity involves receiving a request with the details of the entity to be created. The API generates a unique identifier for the new entity, adds it to the collection, and returns a response indicating success. If validation fails or there are issues with the request, appropriate error responses are returned.
 
-## Update Entity
+## 4. Update Entity
 Updating an existing entity involves finding the entity by its ID and applying the changes provided in the request. The API checks for the existence of the entity, and if found, updates the relevant fields. The response includes the updated entity. If the entity is not found, a "Not Found" response is returned.
 
-## Delete Entity
+## 5. Delete Entity
 The logic behind deleting an entity is straightforward. The API searches for the entity by its ID, removes it from the collection, and returns a success response. If the entity is not found, a "Not Found" response is returned.
+
+## 6. Sorting, Pagination, and Advanced Filtering Logic
+### a. Sorting:
+Takes the sortBy and sortOrder parameters from the query.
+Utilizes LINQ to dynamically order the result set based on the specified field and order.
+### b. Pagination:
+Takes the pageNumber and pageSize parameters from the query.
+Uses LINQ to skip the appropriate number of records based on the page number and take the specified number of records.
+### c. Advanced Filtering:
+Extends the logic of basic filtering to accommodate additional parameters.
+Incorporates more complex criteria for filtering based on user requirements.
 
 # Contributing
 Contributions are welcome! If you'd like to contribute, please follow these steps:
