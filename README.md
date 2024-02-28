@@ -1,16 +1,33 @@
 # MyEntityApi
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [API Documentation](#api-documentation)
+  - [1. Get Entities](#1-get-entities)
+  - [2. Get Entity by ID](#2-get-entity-by-id)
+  - [3. Create Entity](#3-create-entity)
+  - [4. Update Entity](#4-update-entity)
+  - [5. Delete Entity](#5-delete-entity)
+- [Logic Behind Each API](#logic-behind-each-api)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+
 ## Introduction
 
 Welcome to MyEntityApi! This API provides functionality for managing entities, allowing users to perform various operations like creating, updating, deleting, and searching entities. The project is built using .NET 8 and designed to be scalable, with features such as pagination, sorting, and advanced filtering.
 
-## Requirements
+## Installation
+
+### Requirements
 
 Before you start, ensure you have the following installed:
 
 - [.NET 8](https://dotnet.microsoft.com/download/dotnet/8.0)
 
-## Installation
+### Steps
 
 1. **Clone the repository:**
 
@@ -130,6 +147,22 @@ Copy code
 Endpoint: /api/entities/{id}
 Method: DELETE
 Description: Delete an entity by its ID.
+Logic Behind Each API
+1. Get Entities
+Explain the logic behind retrieving entities with filters, pagination, and sorting.
+
+2. Get Entity by ID
+Explain the logic behind retrieving a single entity by its ID.
+
+3. Create Entity
+Explain the logic behind creating a new entity.
+
+4. Update Entity
+Explain the logic behind updating an existing entity.
+
+5. Delete Entity
+Explain the logic behind deleting an entity by its ID.
+
 Contributing
 Contributions are welcome! If you'd like to contribute, please follow these steps:
 
@@ -144,4 +177,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 Credits
 This project was created by [Your Name]. Feel free to contact me at your.email@example.com for any questions or feedback.
-
